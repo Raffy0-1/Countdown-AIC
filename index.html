@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Left Section  */
+        .left-section {
+            width: 50%; 
+            background-color: white;
+            padding: 5% 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .header-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .header-line::before, .header-line::after {
+            content: "";
+            height: 2px;
+            width: 50px;
+            background-color: #222;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .header-line:hover::before, 
+        .header-line:hover::after {
+            width: 70px;
+            background-color: #555;
+        }
+        
+        h1 {
+            font-size: 65px; 
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1:hover {
+            transform: translateY(-3px);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .description {
+            text-align: center;
+            margin-bottom: 70px;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+        
+        .description:hover {
+            letter-spacing: 0.3px;
+        }
+        
+        .subscribe {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        
+        .subscribe h3 {
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: 800;
+        }
+        
+        .subscribe h3:hover {
+            transform: scale(1.02);
+        }
+        
+        .email-container {
+            display: flex;
+            margin-bottom: 10px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .email-container input {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid #000;
+            border-right: none;
+            outline: none;
+            background-color: #000;
+            color: white;
+            font-size: 13px;
+        }
+        
+        .email-container input:hover,
+        .email-container input:focus {
+            background-color: #222;
+        }
+        
+        .email-container input::placeholder {
+            color: white;
+            opacity: 1;
+            font-size: 13px;
+        }
+        
+        .email-container button {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        
+        .email-container button:hover {
+            background-color: #333;
+            transform: translateX(2px);
+        }
+        
+        .social {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .social-text {
+            margin-right: 10px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .social-text:hover {
+            transform: scale(1.05);
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin: 0 3px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #222;
+            color: white;
+            text-align: center;
+            line-height: 22px;
+            text-decoration: none;
+            font-size: 11px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px) scale(1.2);
+            background-color: #444;
+        }
+        
+        .social-icons a:nth-child(1):hover { background-color: #3b5998; } /* Facebook */
+        .social-icons a:nth-child(2):hover { background-color: #1DA1F2; } /* Twitter */
+        .social-icons a:nth-child(3):hover { background-color: #0077B5; } /* LinkedIn */
+        .social-icons a:nth-child(4):hover { background-color: #DB4437; } /* Google */
+
+        /* Right Section */
+        .right-section {
+            width: 50%; 
+            background: linear-gradient(to bottom, #1a1a1a 65%, #f5f5f5 35%);
+            color: #fff;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .logo-container {
+            width: 100%;
+            height: 65%;
+            display: flex;
+            align-items: center;
+            justify-content:center ; 
+            padding-top: 0;
+            transform: translateY(-20px) translateX(5%);
+        }
+        .logo img {
+            width: 80%;
+            max-width: 320px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.05) rotate(2deg);
+        }
+        .timer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: absolute;
+            top: calc(65% - 40px);
+            z-index: 2;
+        }
+        .timer div {
+            font-weight: 800;
+            background: #fff;
+            color: #000;
+            padding: 12px;
+            border-radius: 50%;
+            width: 85px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .timer div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+        }
+        .timer span:first-child {
+            font-size: 26px;
+            margin-bottom: 0;
+            line-height: 1;
+        }
+        .timer span:last-child {
+            font-size: 12px;
+            color: #000;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .contact-container {
+            width: 100%;
+            height: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 20px;
+        }
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 15px;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #1a1a1a;
+            cursor: default;
+        }
+        .contact-item .icon-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3px;
+            position: relative;
+        }
+        .contact-item .icon-label::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover .icon-label::after {
+            height: 2px;
+            background: #555;
+        }
+        .contact-item i {
+            margin-right: 8px;
+            color: #1a1a1a;
+            font-size: 16px;
+        }
+        .contact-item:hover i {
+            color: #555;
+            transform: scale(1.1);
+        }
+        .contact-item .icon-label span {
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+        }
+        .contact-item:hover .icon-label span {
+            color: #555;
+        }
+        .contact-item .details {
+            font-size: 13px;
+            text-align: center;
+            max-width: 180px;
+        }
+        .contact-item .details a {
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+        }
+        .contact-item .details a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+        .contact-item .details a:hover::after {
+            width: 100%;
+        }
+        .contact-item:hover .details {
+            transform: translateY(3px);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                height: auto;
+                overflow: auto;
+            }
+            .left-section, .right-section {
+                width: 100%;
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 40px;
+            }
+            .timer div {
+                width: 65px;
+                height: 65px;
+            }
+            .timer span:first-child {
+                font-size: 20px;
+            }
+            .contact-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .contact-item {
+                color: #fff;
+            }
+            .contact-item i,
+            .contact-item .icon-label span {
+                color: #fff;
+            }
+            .contact-item .icon-label::after {
+                background: #fff;
+            }
+            .email-container {
+                width: 100%;
+            }
+            .logo img {
+                width: 70%;
+                max-width: 250px;
+            }
+            .logo-container {
+                justify-content: center;
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Section -->
+    <div class="left-section">
+        <div class="header-line">Our Website Is</div>
+        <h1>COMING<br>SOON</h1>
+        <p class="description">We are preparing something amazing and exciting<br>for you. Special surprise for our subscribers</p>
+        
+        <div class="subscribe">
+            <h3>Subscribe to get notified</h3>
+            <div class="email-container">
+                <input type="email" placeholder="Enter your email">
+                <button id="subscribe-btn">SUBSCRIBE</button>
+            </div>
+        </div>
+        
+        <div class="social">
+            <span class="social-text">Stay in Touch:</span>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/16RG7T9LUx/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href=" https://x.com/aicadmey?t=iFtSjlJpRhAG_OnAmjHa3w&s=08 " target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/company/aicadmey/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.aicadmey.com/" target="_blank"><i class="fab fa-google"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Section -->
+    <div class="right-section">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="AIc-logo.png" alt="AIC Logo" onerror="this.src='https://via.placeholder.com/320?text=AIC+Logo'">
+            </div>
+        </div>
+        <div class="timer">
+            <div><span id="days"></span><span>Days</span></div>
+            <div><span id="hours"></span><span>Hours</span></div>
+            <div><span id="minutes"></span><span>Minutes</span></div>
+            <div><span id="seconds"></span><span>Seconds</span></div>
+        </div>
+        <div class="contact-container">
+            <div class="contact-row">
+                <div class="contact-item">
+                    <div class="icon-label">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Location</span>
+                    </div>
+                    <div class="details">Bahawalpur <br> Pakistan 63100</div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon-label">
+                        <i class="fas fa-phone"></i>
+                        <span>Contact</span>
+                    </div>
+                    <div class="details">
+                        +44 7852 614545<br>
+                        <a href="http://www.aicadmey.com" target="_blank">www.aicadmey.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const launchDate = new Date("April 18, 2025 19:42:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+        
+        // Initial call to avoid delay
+        updateCountdown();
+        
+        // Update every second
+        setInterval(updateCountdown, 1000);
+        
+        // Email subscription functionality
+        document.getElementById("subscribe-btn").addEventListener("click", function() {
+            const email = document.querySelector(".email-container input").value;
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert("Thank you for subscribing! You'll be notified when we launch.");
+                document.querySelector(".email-container input").value = "";
+            } else {
+                alert("Please enter a valid email address.");
+            }
+        });
+    </script>
+</body>
+</html>
