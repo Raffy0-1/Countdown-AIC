@@ -17,20 +17,22 @@
         
         body {
             display: flex;
-            height: 100vh;
-            overflow: hidden;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         
-        /* Left Section  */
+        /* Left Section */
         .left-section {
-            width: 50%; 
+            width: 100%; 
             background-color: white;
-            padding: 5% 5%;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            order: 2;
         }
         
         .header-line {
@@ -39,29 +41,29 @@
             justify-content: center;
             margin-bottom: 15px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: clamp(16px, 4vw, 18px);
         }
         
         .header-line::before, .header-line::after {
             content: "";
             height: 2px;
-            width: 50px;
+            width: 40px;
             background-color: #222;
-            margin: 0 15px;
+            margin: 0 10px;
             transition: all 0.3s ease;
         }
         
         .header-line:hover::before, 
         .header-line:hover::after {
-            width: 70px;
+            width: 50px;
             background-color: #555;
         }
         
         h1 {
-            font-size: 65px; 
+            font-size: clamp(32px, 8vw, 65px);
             font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 30px;
+            line-height: 1;
+            margin: 20px 0;
             text-align: center;
             position: relative;
         }
@@ -73,318 +75,265 @@
         
         .description {
             text-align: center;
-            margin-bottom: 70px;
+            margin: 0 auto 30px;
             line-height: 1.6;
-            font-size: 13px;
-        }
-        
-        .description:hover {
-            letter-spacing: 0.3px;
+            font-size: clamp(12px, 3vw, 13px);
+            max-width: 400px;
         }
         
         .subscribe {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             width: 100%;
+            max-width: 400px;
         }
         
         .subscribe h3 {
             margin-bottom: 15px;
-            font-size: 14px;
+            font-size: clamp(13px, 3.5vw, 14px);
             font-weight: 800;
-        }
-        
-        .subscribe h3:hover {
-            transform: scale(1.02);
         }
         
         .email-container {
             display: flex;
+            flex-direction: column;
             margin-bottom: 10px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
         }
         
         .email-container input {
-            flex-grow: 1;
+            width: 100%;
             padding: 12px;
             border: 1px solid #000;
-            border-right: none;
             outline: none;
             background-color: #000;
             color: white;
-            font-size: 13px;
-        }
-        
-        .email-container input:hover,
-        .email-container input:focus {
-            background-color: #222;
-        }
-        
-        .email-container input::placeholder {
-            color: white;
-            opacity: 1;
-            font-size: 13px;
+            font-size: 14px;
+            margin-bottom: 10px;
         }
         
         .email-container button {
+            width: 100%;
             background-color: #000;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 12px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 13px;
-        }
-        
-        .email-container button:hover {
-            background-color: #333;
-            transform: translateX(2px);
+            font-size: 14px;
         }
         
         .social {
-            text-align: center;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            margin-top: 20px;
         }
         
         .social-text {
-            margin-right: 10px;
-            font-size: 13px;
+            font-size: clamp(12px, 3vw, 13px);
             font-weight: bold;
-        }
-        
-        .social-text:hover {
-            transform: scale(1.05);
         }
         
         .social-icons a {
             display: inline-block;
             margin: 0 3px;
-            width: 22px;
-            height: 22px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background-color: #222;
             color: white;
             text-align: center;
-            line-height: 22px;
+            line-height: 32px;
             text-decoration: none;
-            font-size: 11px;
-            transition: transform 0.2s, background-color 0.3s;
+            font-size: 14px;
         }
-
-        .social-icons a:hover {
-            transform: translateY(-3px) scale(1.2);
-            background-color: #444;
-        }
-        
-        .social-icons a:nth-child(1):hover { background-color: #3b5998; } /* Facebook */
-        .social-icons a:nth-child(2):hover { background-color: #1DA1F2; } /* Twitter */
-        .social-icons a:nth-child(3):hover { background-color: #0077B5; } /* LinkedIn */
-        .social-icons a:nth-child(4):hover { background-color: #DB4437; } /* Google */
 
         /* Right Section */
         .right-section {
-            width: 50%; 
-            background: linear-gradient(to bottom, #1a1a1a 65%, #f5f5f5 35%);
+            width: 100%; 
+            background: linear-gradient(to bottom, #1a1a1a 60%, #f5f5f5 40%);
             color: #fff;
-            padding: 0;
+            padding: 40px 20px 180px;
             display: flex;
             flex-direction: column;
             position: relative;
+            order: 1;
         }
+        
         .logo-container {
             width: 100%;
-            height: 65%;
             display: flex;
             align-items: center;
-            justify-content:center ; 
-            padding-top: 0;
-            transform: translateY(-20px) translateX(5%);
+            justify-content: center;
+            margin-bottom: 30px;
         }
+        
         .logo img {
-            width: 80%;
-            max-width: 320px;
+            width: 100%;
+            max-width: 250px;
             height: auto;
-            object-fit: contain;
-            transition: transform 0.5s ease;
         }
-        .logo:hover img {
-            transform: scale(1.05) rotate(2deg);
-        }
+        
         .timer {
             width: 100%;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            gap: 10px;
             position: absolute;
-            top: calc(65% - 40px);
-            z-index: 2;
+            bottom: 100px;
+            left: 0;
         }
+        
         .timer div {
             font-weight: 800;
             background: #fff;
             color: #000;
-            padding: 12px;
+            padding: 10px;
             border-radius: 50%;
-            width: 85px;
-            height: 85px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            margin: 0 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
         }
-        .timer div:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, #fff, #f0f0f0);
-        }
+        
         .timer span:first-child {
-            font-size: 26px;
+            font-size: 22px;
             margin-bottom: 0;
             line-height: 1;
         }
+        
         .timer span:last-child {
-            font-size: 12px;
+            font-size: 11px;
             color: #000;
             font-weight: 600;
             margin-top: 4px;
         }
+        
         .contact-container {
             width: 100%;
-            height: 35%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding-bottom: 20px;
         }
+        
         .contact-row {
             display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-bottom: 15px;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
         }
+        
         .contact-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             color: #1a1a1a;
-            cursor: default;
         }
+        
         .contact-item .icon-label {
             display: flex;
             align-items: center;
-            margin-bottom: 3px;
-            position: relative;
+            margin-bottom: 5px;
         }
-        .contact-item .icon-label::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #1a1a1a;
-            transition: all 0.3s ease;
-        }
-        .contact-item:hover .icon-label::after {
-            height: 2px;
-            background: #555;
-        }
+        
         .contact-item i {
             margin-right: 8px;
             color: #1a1a1a;
             font-size: 16px;
         }
-        .contact-item:hover i {
-            color: #555;
-            transform: scale(1.1);
-        }
+        
         .contact-item .icon-label span {
             font-size: 15px;
             font-weight: 700;
             color: #000;
         }
-        .contact-item:hover .icon-label span {
-            color: #555;
-        }
+        
         .contact-item .details {
             font-size: 13px;
             text-align: center;
-            max-width: 180px;
         }
+        
         .contact-item .details a {
             color: inherit;
             text-decoration: none;
-            position: relative;
         }
-        .contact-item .details a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: currentColor;
-            transition: width 0.3s ease;
-        }
-        .contact-item .details a:hover::after {
-            width: 100%;
-        }
-        .contact-item:hover .details {
-            transform: translateY(3px);
-        }
-        
-        /* Responsive styles */
-        @media (max-width: 768px) {
+
+        /* Tablet and Desktop Styles */
+        @media (min-width: 768px) {
             body {
-                flex-direction: column;
-                height: auto;
-                overflow: auto;
+                flex-direction: row;
             }
-            .left-section, .right-section {
-                width: 100%;
-                padding: 30px 20px;
+            
+            .left-section {
+                width: 50%;
+                padding: 5%;
+                order: 1;
             }
-            h1 {
-                font-size: 40px;
+            
+            .right-section {
+                width: 50%;
+                padding: 0;
+                order: 2;
             }
-            .timer div {
-                width: 65px;
-                height: 65px;
-            }
-            .timer span:first-child {
-                font-size: 20px;
-            }
-            .contact-row {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .contact-item {
-                color: #fff;
-            }
-            .contact-item i,
-            .contact-item .icon-label span {
-                color: #fff;
-            }
-            .contact-item .icon-label::after {
-                background: #fff;
-            }
+            
             .email-container {
-                width: 100%;
+                flex-direction: row;
             }
-            .logo img {
-                width: 70%;
-                max-width: 250px;
+            
+            .email-container input {
+                margin-bottom: 0;
+                border-right: none;
             }
-            .logo-container {
+            
+            .email-container button {
+                width: auto;
+            }
+            
+            .timer {
+                top: calc(60% - 35px);
+                bottom: auto;
+                gap: 15px;
+            }
+            
+            .timer div {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .contact-row {
+                flex-direction: row;
                 justify-content: center;
-                padding-left: 0;
+                gap: 60px;
+                margin-top: 0;
+            }
+            
+            .logo-container {
+                height: 60%;
+                margin-bottom: 0;
+            }
+            
+            .contact-container {
+                height: 40%;
+                padding-bottom: 40px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .timer div {
+                width: 90px;
+                height: 90px;
+                margin: 0 10px;
+            }
+            
+            .timer span:first-child {
+                font-size: 26px;
             }
         }
     </style>
@@ -394,7 +343,7 @@
     <div class="left-section">
         <div class="header-line">Our Website Is</div>
         <h1>COMING<br>SOON</h1>
-        <p class="description">We are preparing something amazing and exciting<br>for you. Special surprise for our subscribers</p>
+        <p class="description">We are preparing something amazing and exciting for you. Special surprise for our subscribers</p>
         
         <div class="subscribe">
             <h3>Subscribe to get notified</h3>
